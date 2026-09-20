@@ -2,7 +2,13 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# ... kode route kamu lainnya ...
+# --- route kamu di sini ---
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-# Tambahkan ini di bagian paling bawah file:
+# TAMBAHKAN BARIS INI DI PALING BAWAH:
 app = app
+
+if __name__ == '__main__':
+    app.run()
