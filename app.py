@@ -7,7 +7,6 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# TAMBAHKAN BARIS INI DI PALING BAWAH:
 app = app
 
 if __name__ == '__main__':

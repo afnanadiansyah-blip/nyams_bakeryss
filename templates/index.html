@@ -4,400 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NYAMS BAKERY'S - Sweet Treats & Cakes</title>
-    <style>
-        /* --- RESET & GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #ffb3c1;
-            --secondary-color: #ffcbf2;
-            --dark-color: #590d22;
-            --light-color: #fff0f3;
-            --accent-color: #ff4d6d;
-        }
-
-        body {
-            background-color: #fff8f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- NAVBAR --- */
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: #555;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .btn-order {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .btn-order:hover {
-            background-color: var(--dark-color);
-            color: white;
-        }
-
-        /* --- BACKSOUND CONTROLLER --- */
-        .music-box {
-            background-color: white;
-            border: 2px solid var(--primary-color);
-            border-radius: 20px;
-            padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .music-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .btn-play {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .btn-play:hover {
-            background-color: var(--dark-color);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(89, 13, 34, 0.45), rgba(89, 13, 34, 0.45)), 
-                        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200') center/cover no-repeat;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        .btn-main {
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1rem;
-            display: inline-block;
-            transition: transform 0.2s, background 0.3s;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.05);
-            background-color: var(--secondary-color);
-        }
-
-        /* --- OWNER SECTION --- */
-        .owner-section {
-            background-color: var(--light-color);
-            padding: 60px 20px;
-        }
-
-        .owner-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .owner-img-wrapper {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-        }
-
-        .owner-img {
-            width: 100%;
-            max-width: 320px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(89, 13, 34, 0.15);
-            border: 5px solid white;
-            object-fit: cover;
-        }
-
-        .owner-badge {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-
-        .owner-text {
-            flex: 1.2;
-            min-width: 300px;
-        }
-
-        .owner-text h2 {
-            font-size: 2.2rem;
-            color: var(--dark-color);
-            margin-bottom: 10px;
-        }
-
-        .owner-text h3 {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .quote-box {
-            background-color: white;
-            padding: 15px 20px;
-            border-left: 4px solid var(--accent-color);
-            border-radius: 8px;
-            margin-top: 15px;
-            font-style: italic;
-            color: #444;
-        }
-
-        /* --- PRODUCTS SECTION --- */
-        .products-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            color: var(--dark-color);
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            color: #777;
-            margin-bottom: 40px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: left;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-info h3 {
-            color: var(--dark-color);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .product-info p {
-            color: #666;
-            font-size: 0.88rem;
-            margin-bottom: 15px;
-        }
-
-        .product-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .price {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-
-        .btn-add {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            border: 1px solid var(--primary-color);
-            padding: 6px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .btn-add:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 40px 20px 20px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-col h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        .footer-col p, .footer-col ul {
-            color: #d8b4bc;
-            font-size: 0.95rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 8px;
-        }
-
-        .copyright {
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            color: #a88b92;
-            font-size: 0.85rem;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .owner-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+    <!-- Menghubungkan ke file CSS eksternal di folder static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <!-- NAVBAR -->
     <header>
         <nav class="navbar">
-            <div class="logo">NYAMS<span> BAKERY'S</span></div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo NYAMS BAKERY" class="site-logo">
+                <div class="logo">NYAMS<span> BAKERY'S</span></div>
+            </div>
+            
             <ul class="nav-links">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#owner">Pemilik Toko</a></li>
@@ -456,7 +75,7 @@
         <div class="product-grid">
             
             <!-- Menu 1 -->
-            <div class="product-card">
+            <div class="menu-card" data-title="Mini Fruit Pie" data-desc="Pie renyah dengan isian krim lembut dan topping buah-buahan segar." data-price="Rp 5.000">
                 <img src="https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=600" alt="Mini Fruit Pie">
                 <div class="product-info">
                     <div>
@@ -465,13 +84,13 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 5.000</span>
-                        <button class="btn-add" onclick="orderItem('Mini Fruit Pie', 'Rp 5.000')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Mini Fruit Pie', 'Rp 5.000')">Pesan</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu 2 (Aneka Donat Premium) -->
-            <div class="product-card">
+            <!-- Menu 2 -->
+            <div class="menu-card" data-title="Aneka Donat Premium" data-desc="Donat empuk dengan beragam varian topping glaze dan taburan renyah." data-price="Rp 5.000">
                 <img src="{{ url_for('static', filename='donat.jpg') }}" alt="Aneka Donat Premium">
                 <div class="product-info">
                     <div>
@@ -480,13 +99,13 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 5.000</span>
-                        <button class="btn-add" onclick="orderItem('Aneka Donat Premium', 'Rp 5.000')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Aneka Donat Premium', 'Rp 5.000')">Pesan</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu 3 (Mochi Bites Coklat) -->
-            <div class="product-card">
+            <!-- Menu 3 -->
+            <div class="menu-card" data-title="Mochi Bites Coklat" data-desc="Mochi kenyal bertabur bubuk cokelat lengkap dengan dipping cream gurih." data-price="Rp 7.000">
                 <img src="{{ url_for('static', filename='mochi.jpg') }}" alt="Mochi Bites Coklat">
                 <div class="product-info">
                     <div>
@@ -495,13 +114,13 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 7.000 <small style="font-size:0.7rem; color:#777;">/porsi</small></span>
-                        <button class="btn-add" onclick="orderItem('Mochi Bites Coklat', 'Rp 7.000')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Mochi Bites Coklat', 'Rp 7.000')">Pesan</button>
                     </div>
                 </div>
             </div>
 
             <!-- Menu 4 -->
-            <div class="product-card">
+            <div class="menu-card" data-title="Soft Baked Choco Chips" data-desc="Kue kering klasik rasa mentega bertabur limpahan chocolate chips manis." data-price="Rp 8.500">
                 <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=600" alt="Soft Baked Choco Chips">
                 <div class="product-info">
                     <div>
@@ -510,13 +129,13 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 8.500</span>
-                        <button class="btn-add" onclick="orderItem('Soft Baked Choco Chips', 'Rp 8.500')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Soft Baked Choco Chips', 'Rp 8.500')">Pesan</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu 5 (Kue Lucu Karakter) -->
-            <div class="product-card">
+            <!-- Menu 5 -->
+            <div class="menu-card" data-title="Kue Lucu Karakter" data-desc="Kue lembut dengan hiasan bentuk hewan imut yang super menggemaskan." data-price="Rp 5.000">
                 <img src="{{ url_for('static', filename='kue.jpg') }}" alt="Kue Lucu Karakter">
                 <div class="product-info">
                     <div>
@@ -525,13 +144,13 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 5.000</span>
-                        <button class="btn-add" onclick="orderItem('Kue Lucu Karakter', 'Rp 5.000')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Kue Lucu Karakter', 'Rp 5.000')">Pesan</button>
                     </div>
                 </div>
             </div>
 
             <!-- Menu 6 -->
-            <div class="product-card">
+            <div class="menu-card" data-title="Kue Hitam Legam (Fudge Brownie)" data-desc="Brownies cokelat pekat super lumer dengan lelehan ganache rasa melimpah." data-price="Rp 100.000">
                 <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600" alt="Fudge Brownies">
                 <div class="product-info">
                     <div>
@@ -540,22 +159,7 @@
                     </div>
                     <div class="product-bottom">
                         <span class="price">Rp 100.000</span>
-                        <button class="btn-add" onclick="orderItem('Kue Hitam Legam', 'Rp 100.000')">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Menu 7 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=600" alt="Choco Chips Premium">
-                <div class="product-info">
-                    <div>
-                        <h3>Choco Chips Premium</h3>
-                        <p>Set aneka soft cookies mewah dengan rasa Matcha, Red Velvet, & S'mores.</p>
-                    </div>
-                    <div class="product-bottom">
-                        <span class="price">Rp 50.000</span>
-                        <button class="btn-add" onclick="orderItem('Choco Chips Premium', 'Rp 50.000')">Pesan</button>
+                        <button class="btn-add" onclick="event.stopPropagation(); orderItem('Kue Hitam Legam', 'Rp 100.000')">Pesan</button>
                     </div>
                 </div>
             </div>
@@ -577,7 +181,7 @@
             <div class="footer-col">
                 <h4>Kontak & Lokasi</h4>
                 <ul>
-                    <li>📍 Jl. Sweet Delight No. 06, Palembang</li>
+                    <li>📍 Jl. Srijaya Negara, Bukit Lama, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan 30128</li>
                     <li>📞 0838-0271-7040</li>
                     <li>✉️ hello@nyamsbakery.com</li>
                 </ul>
@@ -587,6 +191,18 @@
             <p>&copy; 2026 NYAMS BAKERY'S. Tugas Kelompok Pemrograman Web.</p>
         </div>
     </footer>
+
+    <!-- MODAL POP-UP MENU -->
+    <div id="menuModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modalImg" src="" alt="Menu Image" class="modal-img">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+            <div class="modal-price" id="modalPrice"></div>
+            <button class="modal-order-btn" onclick="alert('Pesanan berhasil diproses!')">Pesan Sekarang</button>
+        </div>
+    </div>
 
     <!-- JAVASCRIPT -->
     <script>
@@ -612,6 +228,38 @@
             
             window.open(whatsappUrl, '_blank');
         }
+
+        // Logika Pop-up Modal Menu
+        const modal = document.getElementById('menuModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const menuCards = document.querySelectorAll('.menu-card'); 
+
+        menuCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.getAttribute('data-title');
+                const desc = card.getAttribute('data-desc');
+                const price = card.getAttribute('data-price');
+                const imgElement = card.querySelector('img');
+                const imgSrc = imgElement ? imgElement.src : '';
+
+                document.getElementById('modalTitle').innerText = title;
+                document.getElementById('modalDesc').innerText = desc;
+                document.getElementById('modalPrice').innerText = price;
+                document.getElementById('modalImg').src = imgSrc;
+
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
